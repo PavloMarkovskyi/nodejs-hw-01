@@ -4,10 +4,12 @@ import { writeContacts } from "../utils/writeContacts.js";
 export const removeLastContact = async () => {
     const contacts = await readContacts();
     if (contacts.length === 0) {
+        console.log("No contacts to remove.");
         return;
     }
-    contacts.pop();
+    const removedContact = contacts.pop();
     await writeContacts(contacts);
+    console.log("Removed contact:", removedContact);
 };
 
 removeLastContact();
